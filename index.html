@@ -98,7 +98,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Randon Walker</h5>
                                 <p class="card-text">Playing with randomness using lines</p>
-                                <a href="https://anormalguyweird-glitch.github.io/walker/" target="_blank" "btn btn-primary">Go
+                                <a href="https://anormalguyweird-glitch.github.io/walker/" target="_blank" class="btn btn-primary">Go
                                     see project</a>
                             </div>
                         </div>
@@ -137,6 +137,13 @@
                 </div>
             </div>
         </div>
+        <div class="section" id="section-project-cards">
+            <div class="container">
+                <div class="row" id="project-cards-target">
+                    
+                </div>
+            </div>
+        </div>
         <div class="section" id="section-4">
             <div class="container">
                 <div class="title">
@@ -156,9 +163,63 @@
             </div>
         </div>
     </div>
+    <script src="/data/projects.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-</body>
+    <script src="/data/projects.js"></script>
+    <script>
+        const projectCardTargetEL=document.getElementById("project-cards-target")
+        for (let i=0; i<projects.length;i++){
+            let it=projects[i]
+            let title=it.title
+            let description=it.description
+            let button_text=it.button_text
+            let imageURL=it.imageURL
+            let liveURL=it.liveURL
 
-</html>
+            let projectscolEL = document.createElement("div")
+            projectscolEL.classList.add("col-12")
+            projectscolEL.classList.add("col-sc-6")
+            projectscolEL.classList.add("col-lg-4")
+            projectscolEL.classList.add("col-xxl-3")
+
+            let cardEL = document.createElement("div")
+            cardEL.classList.add("card")
+
+            let imgEL = document.createElement("img")
+            imgEL.src = imageURL
+
+            let cardbodyEL = document.createElement("div")
+            cardbodyEL.classList.add("card-body")
+
+            let cardtitleEL = document.createElement("h5")
+            cardtitleEL.classList.add("card-title")
+            cardtitleEL.textContent = title
+
+            let cardtextEL = document.createElement("p")
+            cardtextEL.classList.add("card-text")
+            cardtextEL.textContent = description
+
+            let cardbtnEL = document.createElement("a")
+            cardbtnEL.classList.add('btn')
+            cardbtnEL.classList.add('btn-primary')
+            cardbtnEL.href = liveURL
+            cardbtnEL.target = "_blank"
+            cardbtnEL.textContent = button_text
+
+            cardbodyEL.append(cardtitleEL)
+            cardbodyEL.append(cardtextEL)
+            cardbodyEL.append(cardbtnEL)
+            cardEL.append(imgEL)
+            cardEL.append(cardbodyEL)
+            projectscolEL.append(cardEL)
+            projectCardTargetEL.append(projectscolEL)
+
+
+            // console.log(projectscolEL)
+        }
+    </script>
+        <!-- <script src="assets/js/scripts.js"></script>     -->
+    </body>
+    </html>
